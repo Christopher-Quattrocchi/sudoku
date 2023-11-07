@@ -14,7 +14,7 @@ Grid.prototype.create2dArray = function () {
   this.array = array;
 }
 
-Grid.prototype.assignNumbers = function() {
+Grid.prototype.assignNumbers = function () {
   for (let i = 0; i < this.rows; i++) {
     for (let x = 0; x < this.columns; x++) {
       this.array[i][x] = Math.floor(Math.random() * 9) + 1;
@@ -22,9 +22,37 @@ Grid.prototype.assignNumbers = function() {
   }
 }
 
-Grid.prototype.duplicateChecker = function() {
-  let set = new Set(grid.array[0]);
-  return set.size !== grid.array[0];
+Grid.prototype.rowChecker = function () {
+
+  // return set.size !== grid.array[0].length;
+
+  for (let i = 0; i < this.rows; i++) {
+    let set = new Set(this.array[i]);
+
+    if (set.size !== this.array[i].length) {
+      return true;
+    }
+  }
+  return false;
+}
+
+Grid.prototype.rowCheckerAll = function() {
+  return this.array.every(row => this.rowChecker(row));
+}
+
+Grid.prototype.colChecker = function() {
+  for (let colIndex = 0; colIndex < this.columns; colIndex++) {
+    let columnSet = new Set();
+
+    for (let rowIndex = 0; rowIndex < this.rows; rowIndex++) {
+      columnSet.add(this.array[rowIndex][colIndex]);
+    }
+
+    if (columnSet.size !== this.rows) {
+      return true;
+    }
+  }
+  return false;
 }
 
 let grid = new Grid(9, 9);

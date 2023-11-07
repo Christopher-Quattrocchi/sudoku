@@ -19,6 +19,7 @@
 export default function Grid(rows, columns) {
   this.rows = rows;
   this.columns = columns;
+  this.array = [];
 }
 
 Grid.prototype.create2dArray = function () {
@@ -26,4 +27,5 @@ Grid.prototype.create2dArray = function () {
   for (let i = 0; i < this.rows; i++) {
     array[i] = new Array(this.columns);
   }
+  this.array = array;
 }

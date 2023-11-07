@@ -1,12 +1,32 @@
 import Grid from "../src/js/Grid.js";
 
 describe("Grid", () => {
-  test("should create a nine by nine grid", () => {
+  test("should register rows and columns", () => {
     const grid = new Grid(9, 9);
     expect(grid.rows).toEqual(9);
     expect(grid.columns).toEqual(9);
   })
 });
+
+describe("create2dArray", () => {
+  test("should create a 9x9 grid", () => {
+    const grid = new Grid(9, 9);
+    grid.create2dArray();
+    expect(grid.array.length).toEqual(9);
+
+    grid.array.forEach(innerArray => {
+      expect(innerArray.length).toEqual(9);
+    });
+  });
+});
+
+// describe("create2dArray", () => {
+//   test("should create a 9x9 grid", () => {
+//     const grid = new Grid(9, 9);
+//     const gridArray = grid.create2dArray();
+//     expect(gridArray.length).toEqual(9);
+//   });
+// });
 
 // describe("Triangle", () => {
 //   test("should correctly create a triangle object with three lengths", () => {

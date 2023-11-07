@@ -20,13 +20,22 @@ describe("create2dArray", () => {
   });
 });
 
-// describe("create2dArray", () => {
-//   test("should create a 9x9 grid", () => {
-//     const grid = new Grid(9, 9);
-//     const gridArray = grid.create2dArray();
-//     expect(gridArray.length).toEqual(9);
-//   });
-// });
+describe("assignNumbers", () => {
+  test("should populate the grid with random 1-9 numbers", () => {
+    const grid = new Grid(9, 9);
+    grid.create2dArray();
+    grid.assignNumbers();
+
+    grid.array.forEach(row => {
+      row.forEach(gridElement => {
+        expect(gridElement).toBeGreaterThanOrEqual(1);
+        expect(gridElement).toBeLessThanOrEqual(9);
+      });
+    });
+  });
+});
+
+
 
 // describe("Triangle", () => {
 //   test("should correctly create a triangle object with three lengths", () => {
